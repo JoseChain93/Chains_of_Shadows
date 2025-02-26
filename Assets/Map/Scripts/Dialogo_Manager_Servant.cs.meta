@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 4583e9b69d24a96418fae3cc02ace428
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - panelPersonaje1: {fileID: 4055648780309828671, guid: 403ab5aa37829ff45aa2a68a388c3f84, type: 3}
+  - panelPersonaje2: {instanceID: 0}
+  - textoDialogo1: {instanceID: 0}
+  - textoDialogo2: {instanceID: 0}
+  - nombrePersonajeTexto1: {instanceID: 0}
+  - nombrePersonajeTexto2: {instanceID: 0}
+  - personaje: {instanceID: 0}
+  - musicaTransicion: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
