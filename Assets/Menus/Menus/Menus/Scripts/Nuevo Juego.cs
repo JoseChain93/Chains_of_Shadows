@@ -16,7 +16,7 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadSceneAndActivate()
     {
         // Carga la escena de manera asíncrona
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Intro");
 
         // Espera hasta que la escena esté completamente cargada
         while (!asyncOperation.isDone)

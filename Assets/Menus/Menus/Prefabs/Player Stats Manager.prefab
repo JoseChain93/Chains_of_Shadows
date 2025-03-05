@@ -57,7 +57,7 @@ MonoBehaviour:
     intelligence: 4
     maxHealth: 120
     currentHealth: 120
-    maxMana: 54
-    currentMana: 54
+    maxMana: 90
+    currentMana: 90
     attackPower: 10
     magicPower: 4

@@ -12,7 +12,7 @@ public class CharacterStats
 
     // Atributos base
     public int strength = 10;  // Aumenta ataque y vida
-    public int agility = 8;    // Aumenta evasión
+    public int agility = 8;    // Aumenta la tasa de huída de combate 
     public int intelligence = 4; // Aumenta mana y poder mágico
 
     // Vida y Maná
@@ -84,9 +84,9 @@ public class CharacterStats
     public void CalculateStats()
     {
         maxHealth = 100 + (strength * 2);
-        maxMana = 50 + (intelligence * 1);
+        maxMana = 94 + (intelligence * 1);
         attackPower = strength * 1;
-        magicPower = intelligence * 1;
+        magicPower = intelligence * 4;
     }
 
     public void ResetStats()
@@ -100,8 +100,8 @@ public class CharacterStats
         intelligence = 4;
         maxHealth = 120;
         currentHealth = 120;
-        maxMana = 54;
-        currentMana = 54;
+        maxMana = 9;
+        currentMana = 94;
         attackPower = 10;
         magicPower = 4;
 

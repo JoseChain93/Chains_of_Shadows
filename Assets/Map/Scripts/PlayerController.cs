@@ -18,11 +18,50 @@ public class PlayerController : MonoBehaviour
     public bool isInTransition = false; // Controla si ya está en transición
     private bool canMove = true;  // Variable para controlar si el jugador puede moverse
 
+    public GameObject menuInterface; 
+
     public Transform personaje;
+
+    public MovimientoPersonaje movimientoPersonaje; 
+
+    private void Awake()
+    {
+        // Si ya existe un PlayerController persistente en la escena, destruir este objeto
+        if (GameObject.FindObjectsOfType<PlayerController>().Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Verificar si el objeto menuInterface ya está presente en la escena.
+        if (menuInterface == null)
+        {
+            menuInterface = GameObject.Find("MenuInterface");
+        }
+
+        // Si no existe el menuInterface, lo encontramos y lo hacemos persistente
+        if (menuInterface != null)
+        {
+            if (menuInterface.activeSelf == false)
+            {
+                menuInterface.SetActive(false);  // Asegurarse de que está desactivado inicialmente
+            }
+
+            // Destruir cualquier duplicado en caso de que haya más de una instancia en la escena
+            if (menuInterface.transform.parent == null)
+            {
+                DontDestroyOnLoad(menuInterface);  // Asegura que el objeto no se destruya entre escenas
+            }
+        }
+        
+        // Suscribirse al evento de carga de escenas
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
 
     private void Start()
     {
-   
+
         // Obtener el componente Animator
         animator = GetComponent<Animator>();
 
@@ -58,6 +97,32 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+    
+    if (Input.GetKeyDown(KeyCode.M) && !menuInterface.activeSelf)
+    {
+    menuInterface.SetActive(true);
+    canMove = false; // Bloquea el movimiento en PlayerController
+    moveSpeed = 0; // Reduce la velocidad del PlayerController
+
+    if (movimientoPersonaje != null)
+    {
+        movimientoPersonaje.BloquearMovimiento(); // Bloquea movimiento en MovimientoPersonaje
+        movimientoPersonaje.moveSpeed = 0; // Reduce la velocidad a 0
+    }
+    }
+    else if (Input.GetKeyDown(KeyCode.X) && menuInterface.activeSelf)
+    {
+    menuInterface.SetActive(false);
+    canMove = true; // Permite el movimiento en PlayerController
+    moveSpeed = 2f; // Restaura la velocidad del PlayerController
+
+    if (movimientoPersonaje != null)
+    {
+        movimientoPersonaje.ReanudarMovimiento(); // Reactiva movimiento en MovimientoPersonaje
+        movimientoPersonaje.moveSpeed = 2f; // Restaura la velocidad original
+    }
+    }
+
         if (canMove)
     {
         float horizontalInput = 0f;
@@ -161,12 +226,7 @@ public class PlayerController : MonoBehaviour
     // Habilitar el movimiento de nuevo
     canMove = true;  // El jugador podrá moverse
     }
-    private void OnDestroy()
-    {
-        //Desuscribirse del evento al destruir el objeto
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
+   
     // Corutina que maneja la transición con distorsión y música
     private IEnumerator TransitionToCombat()
     {
@@ -210,14 +270,44 @@ public class PlayerController : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Restaurar la posición si volvemos a la escena anterior al combate
-        if (scene.name == ScenePositionEnterCombatData.ultimaEscena)
-        {
-            transform.position = ScenePositionEnterCombatData.ultimaPosicion;
-            Debug.Log("Posición restaurada: " + transform.position);
-        }
-
-        // **Restablecer la bandera de transición**
-        isInTransition = false;
+         // Comprobar si el objeto PlayerController sigue existiendo
+    if (this == null) 
+    {      
+        return; // Salir si el objeto ya fue destruido
     }
+
+    // Buscar si ya existe una instancia duplicada de menuInterface en la nueva escena
+    GameObject existingMenu = GameObject.Find("MenuInterface");
+
+    if (existingMenu != null && existingMenu != menuInterface)
+    {
+        // Si existe un duplicado de menuInterface, destruirlo
+        Destroy(existingMenu);
+    }
+
+    // Asegurarse de que el menuInterface no se destruya al cambiar de escena
+    if (menuInterface != null && menuInterface.transform.parent == null)
+    {
+        DontDestroyOnLoad(menuInterface);
+    }
+
+    // Si venimos de una escena de combate, restaurar la posición
+    if (scene.name == ScenePositionEnterCombatData.ultimaEscena)
+    {
+        transform.position = ScenePositionEnterCombatData.ultimaPosicion;
+        Debug.Log("Posición restaurada: " + transform.position);
+    }
+
+    // Restablecer la bandera de transición al cargar la escena
+    isInTransition = false;
+
+       
+    }
+
+     private void OnDestroy()
+    {
+        //Desuscribirse del evento al destruir el objeto
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
 }
