@@ -1019,28 +1019,30 @@ MonoBehaviour:
   playerController: {fileID: 0}
   movimientoPersonaje: {fileID: 0}
   lineas:
-  - "Vaya, vaya me sorprende su determinaci\xF3n, no esperaba que llegase tan lejos"
-  - "Mis sirvientes ya me informaron de un forastero, que se intento entrometer mientras
-    recolectaban m\xE1s \"Sacrificios\""
-  - "Para llevar a cabo el ritual que resucitar\xE1 a madre... "
-  - "Ver\xE1...cuando madre muri\xF3 tras una enfermedad horrible e inombrable\u2026 "
-  - "Yo ca\xED en desgracia....porque yo la amaba demasiado....para mi lo era todo..  "
-  - "Hasta que una noche un extra\xF1o me ofreci\xF3 realizar un pacto con \xE9l
-    a cambio de un libro de magia prohibido con el c\xFAal me aseguraba que podr\xEDa
-    revivirla.. "
-  - "Llamado la \"Transmigraci\xF3n de la Carne\" ,  al principio no entend\xEDa
-    nada pero con el tiempo empece a escuchar voces que me ayudaron...."
+  - "Vaya, vaya, me sorprende su determinaci\xF3n. No esperaba que llegase tan lejos."
+  - "Mis sirvientes ya me informaron de un forastero que se intent\xF3 entrometer
+    mientras recolectaban m\xE1s 'sacrificios'."
+  - "Para llevar a cabo el ritual que resucitar\xE1 a madre..."
+  - "Ver\xE1... cuando madre muri\xF3 tras una enfermedad horrible e innombrable..."
+  - "Yo ca\xED en desgracia... porque yo la amaba demasiado... para m\xED, lo era
+    todo."
+  - "Hasta que una noche, un extra\xF1o me ofreci\xF3 realizar un pacto con \xE9l
+    a cambio de un libro de magia prohibido con el cual me aseguraba que podr\xEDa
+    revivirla..."
+  - "Llamado la 'Transmigraci\xF3n de la Carne'. Al principio no entend\xEDa nada,
+    pero con el tiempo empec\xE9 a escuchar voces que me ayudaron..."
   - "A comprender su poder, detr\xE1s de sus p\xE1ginas plasmadas en sangre, en una
     lengua muerta..."
-  - 'Pero primero necesitaba recolectar ciertos "Ingredientes" para llevar a cabo
-    el ritual hasta que funcionase...  '
-  - "Y por eso durante las noches envi\xF3 a mis hombres en busca de jovenes que
-    viven en la calle, la lacra de la sociedad, gente que nadie hechar\xE1 de menos..  "
+  - Pero primero necesitaba recolectar ciertos 'ingredientes' para llevar a cabo
+    el ritual hasta que funcionase...
+  - "Y por eso, durante las noches, envi\xE9 a mis hombres en busca de j\xF3venes
+    que viven en la calle, la lacra de la sociedad, gente que nadie echar\xE1 de
+    menos..."
   - "Para poder extraer de ellos sus \xF3rganos y su esencia vital para alimentar
-    a madre "
-  - "Pero nada de eso importa ahora, dentro de lo que cabe no deja de ser una bendici\xF3n
-    que  usted se encuentre aqu\xED ahora mismo...  "
-  - "Porque usted ser\xE1......UN SACRIFICIO PERFECTO!!!!"
+    a madre."
+  - "Pero nada de eso importa ahora. Dentro de lo que cabe, no deja de ser una bendici\xF3n
+    que usted se encuentre aqu\xED ahora mismo..."
+  - "\xA1Porque usted ser\xE1...EL SACRIFICIO PERFECTO!"
   musicaTransicion: {fileID: 8300000, guid: 7c22a8b1751bad740bdca9473897862c, type: 3}
   audioSource: {fileID: 433374085}
   nombreEscena: BossCombat3

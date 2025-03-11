@@ -186,6 +186,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+
         if (stats != null)
         {
             // Si está defendiendo, reducimos el daño a la mitad
@@ -197,8 +198,11 @@ public class Player : MonoBehaviour
             }
 
             // Aplicamos el daño al jugador
+            //StartCoroutine(BlinkOnDamage());
             Debug.Log("¡El jugador ha recibido " + damage + " de daño! Salud restante: " + stats.currentHealth);
             stats.TakeDamage(damage);
+
+
 
 
             // Desactivamos la defensa después de recibir el daño
@@ -210,6 +214,23 @@ public class Player : MonoBehaviour
                 Die();
             }
         }
+    }
+
+    // Método para hacer que el personaje parpadee rápidamente al recibir daño
+    private IEnumerator BlinkOnDamage()
+    {
+    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+    if (spriteRenderer != null)
+    {
+        for (int i = 0; i < 2; i++) // Parpadea 2 veces
+            {
+                spriteRenderer.enabled = false; // Ocultar
+                yield return new WaitForSeconds(0.1f);
+                spriteRenderer.enabled = true; // Mostrar
+                yield return new WaitForSeconds(0.1f);
+            }
+    }
     }
 
     public void Attack()
@@ -626,6 +647,5 @@ public class Player : MonoBehaviour
 
         // Restaurar la posición después de cargar la escena
         transform.position = ScenePositionEnterCombatData.ultimaPosicion;
-        Debug.Log("Posición restaurada en " + sceneName + ": " + transform.position);
     }
 }

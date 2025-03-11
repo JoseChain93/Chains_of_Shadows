@@ -1851,15 +1851,16 @@ MonoBehaviour:
   playerController: {fileID: 423853481}
   movimientoPersonaje: {fileID: 423853484}
   lineas:
-  - "Disculpe se\xF1or tiene un momento de su tiempo? Me gustar\xEDa que me respondiera
-    una preguntas..ha visto algo raro por aqui?"
-  - "Qu\xE9 haces aqui?...l\xE1rgate o te aseguro que vas a acabar mal... "
-  - "No me voy a ir de aqu\xED, ver\xE1 estoy investigando unas extra\xF1as desaparaciones
-    por aqu\xED y sinceramente usted parece bastante  sospechoso... "
-  - "En ese caso...tendr\xE9 que ocuparme de ti, ser\xEDa molesto para el se\xF1or
-    LionStar que deje testigos o a gente entrometidas o haciendo preguntas como t\xFA.... "
-  - "LionStar? Esta hablando de Viktor Von LionStar? Que pinta \xE9l en todo esto?"
-  - 'Basta de charlas!!...Y preparate para morir intruso!! '
+  - "Disculpe, se\xF1or, \xBFtiene un momento de su tiempo? Me gustar\xEDa que me
+    respondiera unas preguntas... \xBFHa visto algo raro por aqu\xED?"
+  - "\xBFQu\xE9 haces aqu\xED? ... L\xE1rgate o te aseguro que vas a acabar mal..."
+  - "No me voy a ir de aqu\xED. Ver\xE1, se\xF1or, estoy investigando unas extra\xF1as
+    desapariciones por aqu\xED y, sinceramente, usted parece bastante sospechoso..."
+  - "En ese caso... tendr\xE9 que ocuparme de ti. Ser\xEDa molesto para el se\xF1or
+    LionStar que deje testigos o a gente entrometida o haciendo preguntas como t\xFA..."
+  - "\xBFLionStar? \xBFEst\xE1 hablando de Viktor Von LionStar? \xBFQu\xE9 pinta
+    \xE9l en todo esto?"
+  - "\xA1Basta de charlas! \xA1Y prep\xE1rate para morir, intruso!"
   musicaTransicion: {fileID: 8300000, guid: 7c22a8b1751bad740bdca9473897862c, type: 3}
   transitionTime: 0.5
   nombreEscena: BossCombat2

@@ -2378,8 +2378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceReward: 200
-  maxHealth: 220
-  health: 220
+  maxHealth: 160
+  health: 160
   attackDamage: 12
   lifeStealDamage: 8
   lifeStealAmount: 5

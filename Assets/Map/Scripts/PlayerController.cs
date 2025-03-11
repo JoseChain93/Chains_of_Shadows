@@ -174,31 +174,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   // Guardado solo si la escena no está restringida
-    if (Input.GetKeyDown(KeyCode.G))
-    {
-        string currentSceneName = SceneManager.GetActiveScene().name;
+        // Guardado solo si la escena no está restringida
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //string currentSceneName = SceneManager.GetActiveScene().name;
 
         // Condiciones para bloquear el guardado
-        bool isCombatScene = currentSceneName.Contains("Combat");
-        bool isDialogScene = currentSceneName.Contains("Dialogo");
-        bool isRestrictedMap = currentSceneName == "Mapa5" || currentSceneName == "Mapa6" || currentSceneName == "Mapa7";
+        //bool isCombatScene = currentSceneName.Contains("Combat");
+        //bool isDialogScene = currentSceneName.Contains("Dialogo");
+        // bool isRestrictedMap = currentSceneName == "Mapa5" || currentSceneName == "Mapa6" || currentSceneName == "Mapa7";
 
-        if (!isCombatScene && !isDialogScene && !isRestrictedMap)
-        {
-            PlayerStats.Instance.SaveGame();
-        }
-        else
-        {
-            Debug.LogWarning("¡No puedes guardar la partida aquí!");
-        }
-    }
+        //if (!isCombatScene && !isDialogScene && !isRestrictedMap)
+        //{
+            //PlayerStats.Instance.SaveGame();
+        //}
+        //else
+        //{
+            //Debug.LogWarning("¡No puedes guardar la partida aquí!");
+        //}
+
+    //}
 
     // Cargar juego (sin restricciones)
-    if (Input.GetKeyDown(KeyCode.C))
-    {
-        PlayerStats.Instance.LoadGame();
-    }
+    //if (Input.GetKeyDown(KeyCode.C))
+    //{
+        //PlayerStats.Instance.LoadGame();
+    //}
 
     }
 

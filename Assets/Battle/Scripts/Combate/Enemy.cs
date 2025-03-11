@@ -77,12 +77,30 @@ public class Enemy : MonoBehaviour
         Debug.Log("¡" + gameObject.name + " ha recibido " + damage +  " de daño!");
 
         PlaySound(damageSound);  
+        StartCoroutine(BlinkOnDamage());
 
         // Verificar si el enemigo ha muerto
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    // Método para hacer que el enemigo parpadee rápidamente al recibir daño
+    private IEnumerator BlinkOnDamage()
+    {
+    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+    if (spriteRenderer != null)
+    {
+        for (int i = 0; i < 2; i++) // Parpadea 2 veces
+            {
+                spriteRenderer.enabled = false; // Ocultar
+                yield return new WaitForSeconds(0.1f);
+                spriteRenderer.enabled = true; // Mostrar
+                yield return new WaitForSeconds(0.1f);
+            }
+    }
     }
 
     // Método de muerte del enemigo

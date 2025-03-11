@@ -994,23 +994,24 @@ MonoBehaviour:
   playerController: {fileID: 1355549068}
   movimientoPersonaje: {fileID: 1355549066}
   lineas:
-  - Viktor Von LionStar...Maldito loco...que dios te perdone y se  apiade de tu alma...
-  - "Todo esto nunca deber\xEDa haber pasado...."
+  - Viktor Von LionStar... Maldito loco... que Dios te perdone y se apiade de tu
+    alma...
+  - "Todo esto nunca deber\xEDa haber pasado..."
   - "Una tragedia as\xED nunca deber\xEDa repetirse..."
   - "(Solomon coge el libro maldito de la Transmigraci\xF3n de la Carne entre sus
-    manos)"
-  - "Un poder tan aberrante y oscuro como este nunca deber\xEDa caer en manos humanas...."
-  - "Es demasiado peligroso, llevarlo al Vaticano y correr el riesgo de que alg\xFAn
-    d\xEDa llegue a volver a usarse.."
-  - '(Solomon usa magia sagrada para quemar el libro) '
-  - "Como sea...misi\xF3n cumplida (Dice en tono amargo)"
-  - "Lo que a\xFAn no entiendo....es como algo tan poderoso pudo llegar a manos de
-    este loco..."
-  - "Ni tampoco quien o que era el extra\xF1o individuo del que hablaba Viktor..."
-  - "Lo \xFAnico que tengo claro...es que esto no terminar\xE1 mientras haya un tipo
-    as\xED de peligroso por ah\xED suelto...."
-  - De todas formas....sea como sea...es hora de volver..
-  - Adios Viktor que en paz descanse...
+    manos.)"
+  - "Un poder tan aberrante y oscuro como este nunca deber\xEDa caer en manos humanas..."
+  - "Es demasiado peligroso llevarlo al Vaticano y correr el riesgo de que alg\xFAn
+    d\xEDa llegue a volverse a usar..."
+  - (Solomon usa magia sagrada para quemar el libro.)
+  - "Como sea... misi\xF3n cumplida,\" (dice en tono amargo)."
+  - "Lo que a\xFAn no entiendo... es c\xF3mo algo tan poderoso pudo llegar a manos
+    de este loco..."
+  - "Ni tampoco qui\xE9n o qu\xE9 era el extra\xF1o individuo del que hablaba Viktor..."
+  - "Lo \xFAnico que tengo claro... es que esto no terminar\xE1 mientras haya un
+    tipo as\xED de peligroso por ah\xED suelto..."
+  - De todas formas... sea como sea... es hora de volver.
+  - "Adi\xF3s, Viktor. Que en paz descanse..."
   musicaTransicion: {fileID: 0}
   audioSource: {fileID: 0}
   nombreEscena: 

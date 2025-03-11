@@ -1078,11 +1078,11 @@ MonoBehaviour:
   playerController: {fileID: 423853481}
   movimientoPersonaje: {fileID: 423853484}
   lineas:
-  - Vaya....Otra noche mas patrullando....
-  - " El Vaticano me envi\xF3 para investigar varias desapariciones, pero a\xFAn
-    no vi nada raro"
-  - " Seguir\xE9 patrullando esta noche haber si encuentro algo sospechoso antes
-    de reportarlo a mis superiores....."
+  - "Vaya... Otra noche m\xE1s patrullando..."
+  - "El Vaticano me envi\xF3 para investigar varias desapariciones, pero a\xFAn no
+    he visto nada raro."
+  - "Seguir\xE9 patrullando esta noche a ver si encuentro algo sospechoso antes de
+    reportarlo a mis superiores..."
 --- !u!1 &1504051327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8661967282005572247, guid: 59c2290ce96fe7f4a86e56d4772d2857, type: 3}

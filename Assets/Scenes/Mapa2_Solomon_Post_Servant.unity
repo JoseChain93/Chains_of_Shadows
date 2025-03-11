@@ -1518,14 +1518,15 @@ MonoBehaviour:
   playerController: {fileID: 423853481}
   movimientoPersonaje: {fileID: 423853484}
   lineas:
-  - 'Mierda!! Se me ha escapado!! Ese tipo era bastante duro... '
-  - "De todas formas, parece despu\xE9s de todo si que esta pasando algo raro..."
-  - "Al principio era exc\xE9ptico con respecto a los rumores por los que el Vaticano
-    me envi\xF3 aqui a investigar.. "
-  - "Pero parece que eran ciertos....Lo que tengo claro, es que seguramente encuentre
-    la respuesta en la mansi\xF3n LionStar "
+  - "\xA1Mierda! \xA1Se me ha escapado! Ese tipo era bastante duro..."
+  - "De todas formas, parece que, despu\xE9s de todo, s\xED est\xE1 pasando algo
+    raro..."
+  - "Al principio era esc\xE9ptico con respecto a los rumores por los que el Vaticano
+    me envi\xF3 aqu\xED a investigar..."
+  - "Pero parece que eran ciertos... Lo que tengo claro es que seguramente encuentre
+    la respuesta en la mansi\xF3n LionStar."
   - "As\xED que supongo que tendr\xE9 que abrirme paso hasta all\xE1 a la vieja usanza
-    y interrogar al se\xF1or LionStar..."
+    e interrogar al se\xF1or LionStar..."
   musicaTransicion: {fileID: 0}
   audioSource: {fileID: 0}
   nombreEscena: 

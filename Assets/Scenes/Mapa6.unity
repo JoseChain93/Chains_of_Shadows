@@ -1299,14 +1299,15 @@ MonoBehaviour:
   playerController: {fileID: 0}
   movimientoPersonaje: {fileID: 1355549066}
   lineas:
-  - "Agh...Maldici\xF3n!! Perdoname Madre...casi logro devolverte a la vida...casi
-    lo consigo...."
-  - "Pero...a\xFAn puedo hacer algo...Yo ser\xE9 tu sacrificio....REGRESA A MI MADRE!!!"
+  - "\xA1Agh... Maldici\xF3n! Perd\xF3name, madre... casi logro devolverte a la vida...
+    casi lo consigo..."
+  - "\xA1Pero... a\xFAn puedo hacer algo! Yo ser\xE9 tu sacrificio... \xA1REGRESA
+    A M\xCD, MADRE!!!"
   - "(Viktor se atraviesa el pecho con su cuchilla, mientras se desploma y abraza
-    el c\xE1daver de su madre)"
-  - Madre....Pronto estaremos juntos....de nuevo.
-  - (Madre resucita, convirtiendose en un monstruo y comienza a devorar a Viktor)
-  - 'Ahhhhhh!!!!! Aggggg...Madre..... '
+    el cad\xE1ver de su madre.)"
+  - Madre... pronto estaremos juntos... de nuevo.
+  - "(Madre resucita, convirti\xE9ndose en un monstruo, y comienza a devorar a Viktor.)"
+  - "\xA1Ahhhhhh!!!!! \xA1Aggggg... Madre..."
   madre: {fileID: 321461069}
   viktor: {fileID: 1266155280}
   madreBoss: {fileID: 1222758065}

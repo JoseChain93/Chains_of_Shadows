@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Chains of Shadows.sln"
+    "dotnet.defaultSolution": "Chains_of_Shadows.sln"
 }
