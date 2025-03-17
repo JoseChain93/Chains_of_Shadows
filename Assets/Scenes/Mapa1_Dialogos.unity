@@ -782,6 +782,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1727464129651361495, guid: 59c2290ce96fe7f4a86e56d4772d2857, type: 3}
+      propertyPath: m_text
+      value: "\nAbrir Men\xFA - M\nPulsar Bot\xF3n Men\xFA - Click Rat\xF3n\nCerrar
+        Men\xFA X\nCerrar Men\xFA de Controles"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257150185673665910, guid: 59c2290ce96fe7f4a86e56d4772d2857, type: 3}
+      propertyPath: m_text
+      value: "Pulsar Bot\xF3n Combate - Click Rat\xF3n\nFinalizar Combate tras Vencer 
+        Barra Espaciadora \n\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 3917019650730359819, guid: 59c2290ce96fe7f4a86e56d4772d2857, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

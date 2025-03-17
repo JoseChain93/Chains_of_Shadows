@@ -821,12 +821,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405829709}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.500886, y: -0.0009702028, z: -10}
+  m_LocalScale: {x: 1.7416726, y: 0.09702028, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1741885551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1534772244
 PrefabInstance:
@@ -899,6 +899,17 @@ PrefabInstance:
     - target: {fileID: 7473040899334660936, guid: 59ecec0943438b046aa98bbb31dbe7f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906895778142818884, guid: 59ecec0943438b046aa98bbb31dbe7f5, type: 3}
+      propertyPath: m_text
+      value: "\nAbrir Men\xFA - M\nPulsar Bot\xF3n Men\xFA - Click Rat\xF3n\nCerrar
+        Men\xFA X\nCerrar Men\xFA de Controles C\nCerrar Men\xFA de Estadisticas
+        S"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9111023623617469835, guid: 59ecec0943438b046aa98bbb31dbe7f5, type: 3}
+      propertyPath: m_text
+      value: "Pulsar Bot\xF3n Combate - Click Rat\xF3n\nFinalizar Combate tras Vencer 
+        Barra Espaciadora\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 9208316456041254933, guid: 59ecec0943438b046aa98bbb31dbe7f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1252,7 +1263,8 @@ Transform:
   m_LocalPosition: {x: 8.9, y: 0.01, z: 0}
   m_LocalScale: {x: 0.57416075, y: 10.307123, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1405829712}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1741885552
@@ -1535,7 +1547,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1405829712}
   - {fileID: 624354326}
   - {fileID: 423853480}
   - {fileID: 1741885551}

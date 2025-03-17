@@ -43,7 +43,7 @@ public class CombatManager2 : MonoBehaviour
             Debug.Log("Fin del juego. El jugador ha muerto.");
         }
 
-        else if ((enemy1 == null && enemy2 == null) && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
+        else if ((enemy1 == null && enemy2 == null) && (Input.GetKeyDown(KeyCode.Space)))
         {
             Debug.Log("¡Victoria! Todos los enemigos han sido derrotados.");
 
