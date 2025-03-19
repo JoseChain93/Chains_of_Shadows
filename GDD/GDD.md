@@ -32,6 +32,19 @@ Debido a los extensos rumores relacionados con estos hechos, el vaticano decidi�
 
 Su llegada a Duskmoor, acompañada en un inicio de un pensamiento excéptico con respecto a la naturaleza de este caso pese a buscar su búsqueda de la verdad detrás de las desapareciones, para más adelante descubrir que está totalmente equivocado....
 
+Tras varias noches patrullando, con la aparición de unas misteriosas criaturas sombrías, Solomon acabará encotrandose con unos hombres enmascarados que intentan matarlo mientras estaba investigando, declarandose a si mismos como hombres de Viktor Von LionStar, un noble influyente en la ciudad.
+
+Tras una pelea encarnizada, uno de ellos consigue escapar y Solomon concluye que de alguna forma parece que está implicado en las desapariciones, así que toma la decisión de abrirse paso hasta llegar a la mansión LionStar.
+
+Al llegar a la mansión comienza a explorarla, mientras continúa enfrentándose tanto a criaturas como hombres de LionStar, hasta llegar a una especie de habitación oculta, parecida a una sala parecida a un quirófano rudimentario, con lo que parece ser el cádaver momificado y crucificado de una mujer, donde se encuentra y confronta a Viktor.
+
+En este momento, Viktor confiesa sus verdaderas intenciones y que la verdad detrás de las desapariciones es utilizar sus cuerpos, órganos y esencia vital para revivir a su madre muerta,con la cúal está obsesionado de forma enfermiza, a través de un ritual de un libro maldito conocido 
+como la "transmigración de la carne". Tambíem nos cuenta como llego a sus manos gracias a un extraño individuo con el cúal realizo una especie de pacto que no especifica.
+
+Tras estas revelaciones, lejos de parecer intimidado ante la presencia de Solomon, lo considera como una oportunidad de usarlo como un sacrificio para revivirla y lo ataca. Después una pelea muy pareja, Viktor agotado y herido se tambalea, lamentandose por haber estado tan cerca de revivirla y decide apuñalarse a si mismo para ser el mismo el sacrificio para revivirla. En ese momento su madre, revive y se convierte en un monstruo que lo primero que hace es acabar de devorar 
+al que un día fue su hijo.
+
+Tras derrotarla, Solomon agarra el libro maldito y debido a haber visto el poder aberrante que encierra y el peligro que representa, en lugar de llevarlo al Vaticano decide destruírlo ahí mismo usando su magia, mientras reflexiona y se pregunta quien era el misterioso individuo del que hablaba Viktor. Tras esto, da por concluída su misión antes de abandonar la mansión.
 
 ## Mecánicas del Juego
 Este juego consiste en avanzar a lo largo de los diferentes mapas, a medida que vas progresando en la historia del juego hasta descubrir la verdad detrás de las desapariciones y detener al responsable.
