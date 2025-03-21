@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 84406287}
   enemy1: {fileID: 18283879}
-  enemy2: {fileID: 0}
+  enemy2: {fileID: 1455665999}
   logPanelManager: {fileID: 2029303407}
 --- !u!114 &940010117
 MonoBehaviour:
