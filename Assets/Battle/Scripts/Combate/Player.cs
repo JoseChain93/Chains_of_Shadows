@@ -65,6 +65,18 @@ public class Player : MonoBehaviour
             targetEnemy = enemies[0];
 
             MoveMarkerToTarget(); // Mover el marcador al primer enemigo
+
+             // Asegurarse de que el marcador de enemy1 esté activo al principio
+            if (marcadorEnemy1 != null)
+            {
+                marcadorEnemy1.gameObject.SetActive(true);  // Activar el marcador de enemy1
+            }
+
+            // Desactivar el marcador del otro enemigo al inicio
+            if (marcadorEnemy2 != null)
+            {
+                marcadorEnemy2.gameObject.SetActive(false); // Desactivar el marcador de enemy2
+            }
         }
 
         if (PlayerStats.Instance != null)
@@ -131,22 +143,28 @@ public class Player : MonoBehaviour
     {
         // Filtrar enemigos vivos
         enemies = FilterAliveEnemies(enemies);
-
+        
+         if (enemies.Length > 0)
+        {
         // Seleccionar el primer enemigo si se presiona la tecla 1
-        if (Input.GetKeyDown(KeyCode.Alpha1) && enemies.Length > 0)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             targetEnemy = enemies[0]; // Seleccionar el primer enemigo vivo
             Debug.Log("Objetivo cambiado a: " + targetEnemy.name);
             MoveMarkerToTarget(); // Mover el marcador
         }
+        }
+          if (enemies.Length > 0)
+        {
         // Seleccionar el segundo enemigo si se presiona la tecla 2
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && enemies.Length > 1)
+       if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             targetEnemy = enemies[1]; // Seleccionar el segundo enemigo vivo
             Debug.Log("Objetivo cambiado a: " + targetEnemy.name);
             MoveMarkerToTarget(); // Mover el marcador
         }
-
+        }
+        
         // Si el objetivo está muerto, seleccionar automáticamente al siguiente enemigo
         if (targetEnemy != null && targetEnemy.health <= 0)
         {
@@ -235,7 +253,7 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        targetEnemy = GetCurrentMarkedEnemy();
+        Enemy enemyToAttack = GetCurrentMarkedEnemy();
 
         if (targetEnemy != null && stats != null)
         {
@@ -250,7 +268,7 @@ public class Player : MonoBehaviour
     // Método para lanzar la habilidad Disparo de Fe
     public void DisparoDeFe()
     {
-        targetEnemy = GetCurrentMarkedEnemy();
+        Enemy enemyToAttack = GetCurrentMarkedEnemy();
 
         if (stats.currentMana >= 35) // Verificar si tiene suficiente maná
         {
@@ -488,12 +506,12 @@ public class Player : MonoBehaviour
         marcadorEnemy2.SetActive(false);
 
         // Activar y mover el marcador correspondiente
-        if (targetEnemy == enemies[0] && marcadorEnemy1 != null)
+        if (targetEnemy == enemies[0])
         {
             marcadorEnemy1.SetActive(true); // Activar marcador del enemigo 1
 
         }
-        else if (targetEnemy == enemies[1] && marcadorEnemy2 != null)
+        else if (targetEnemy == enemies[1])
         {
             marcadorEnemy2.SetActive(true); // Activar marcador del enemigo 2
 
@@ -518,20 +536,15 @@ public class Player : MonoBehaviour
 
     private Enemy GetCurrentMarkedEnemy()
     {
-        foreach (Enemy enemy in enemies)
+        if (marcadorEnemy1.activeSelf)  // Si el marcador del enemigo 1 está activo
         {
-            if (enemy != null)
-            {
-                // Si el marcador del enemigo está activo, devuelve ese enemigo
-                if (marcadorEnemy1.activeSelf && enemy == enemies[0])
-                    return enemies[0];
-
-                if (marcadorEnemy2.activeSelf && enemy == enemies[1])
-                    return enemies[1];
-            }
+        return enemies[0];  // Retornamos el enemigo 1
         }
-
-        return null; // Si no hay ningún marcador activo
+        if (marcadorEnemy2.activeSelf)  // Si el marcador del enemigo 2 está activo
+        {
+        return enemies[1];  // Retornamos el enemigo 2
+        }
+        return null;  // Si no hay marcador activo, no hay enemigo para atacar
     }
 
     public void ApplyBleedEffect(int damagePerTurn, int turns)
