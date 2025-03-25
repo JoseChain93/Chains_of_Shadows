@@ -22,6 +22,11 @@ public class PlayerInterface : MonoBehaviour
         UpdateUI();
     }
 
+    void Update()
+    {
+        UpdateUI();
+    }
+
     // Método para actualizar la interfaz de usuario solo cuando sea necesario
     public void UpdateUI()
     {

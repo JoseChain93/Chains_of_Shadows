@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExitGame : MonoBehaviour
 {
-    public void QuitGame() // Asegúrate de que este método es público
+    public void QuitGame()
     {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false; // Detener el juego en el editor

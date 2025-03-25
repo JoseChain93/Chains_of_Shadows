@@ -46,14 +46,8 @@ public class PlayerController : MonoBehaviour
             {
                 menuInterface.SetActive(false);  // Asegurarse de que está desactivado inicialmente
             }
-
-            // Destruir cualquier duplicado en caso de que haya más de una instancia en la escena
-            if (menuInterface.transform.parent == null)
-            {
-                DontDestroyOnLoad(menuInterface);  // Asegura que el objeto no se destruya entre escenas
-            }
         }
-        
+
         // Suscribirse al evento de carga de escenas
         SceneManager.sceneLoaded += OnSceneLoaded;
     }

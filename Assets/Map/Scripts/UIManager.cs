@@ -8,18 +8,20 @@ public class UIManager : MonoBehaviour
     // Lista de botones para mantener sus listeners.
     public Button[] botones;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Asegura que este objeto persista entre escenas.
-        }
-        else
-        {
-            Destroy(gameObject); // Si ya existe, destrúyelo para evitar duplicados.
-        }
-    }
+    /*  private void Awake()
+     {
+         if (instance == null)
+         {
+             instance = this;
+             DontDestroyOnLoad(gameObject); // Asegura que este objeto persista entre escenas.
+         }
+         else
+         {
+             Destroy(gameObject); // Si ya existe, destrúyelo para evitar duplicados.
+         }
+     }
+     */
+
 
     // Método para registrar los listeners de los botones.
     public void RegistrarBotones()
@@ -39,10 +41,12 @@ public class UIManager : MonoBehaviour
     }
 
     // Este método se puede llamar cuando la escena se ha cargado.
-    public void RecargarConfiguracionBotones()
+    /*public void RecargarConfiguracionBotones()
     {
         // Aquí podrías hacer un ciclo para reconfigurar los listeners.
         // Llama a `RegistrarBotones` cada vez que cambies de escena.
         RegistrarBotones();
     }
+    */
 }
+ 
