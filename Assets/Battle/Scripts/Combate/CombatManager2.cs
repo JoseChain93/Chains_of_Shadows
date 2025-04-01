@@ -43,19 +43,27 @@ public class CombatManager2 : MonoBehaviour
             Debug.Log("Fin del juego. El jugador ha muerto.");
         }
 
-        else if ((enemy1 == null || enemy1.health <= 0) && (enemy2 == null || enemy2.health <= 0))
+        else if ((enemy1 == null || enemy1.health <= 0) && (enemy2 == null || enemy2.health <= 0) && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("¡Victoria! Todos los enemigos han sido derrotados.");
+
+           
 
             // Comprobar si hay una escena anterior guardada y que no sea una escena de combate
             if (!string.IsNullOrEmpty(ScenePositionEnterCombatData.ultimaEscena) &&
                 !ScenePositionEnterCombatData.ultimaEscena.Contains("SceneCombat"))
             {
-                // **Restablecer la bandera de transición**
-                PlayerController playerController = FindObjectOfType<PlayerController>();
-                if (playerController != null)
+
+                PlayerController foundPlayerController = FindObjectOfType<PlayerController>();  // Cambié el nombre aquí
+                if (foundPlayerController != null)
                 {
-                    playerController.isInTransition = false; // Permitir futuros combates
+                    foundPlayerController.isInTransition = false; // Permitir futuros combates
+
+                    if (foundPlayerController.menuInterface != null)
+                    {
+                        foundPlayerController.menuInterface.SetActive(false); // Desactivar para asegurar la correcta asignación
+
+                    }
                 }
 
                 string previousScene = ScenePositionEnterCombatData.ultimaEscena;

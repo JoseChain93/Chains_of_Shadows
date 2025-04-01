@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerController : MonoBehaviour
 {
     public CharacterStats stats;
@@ -26,30 +27,12 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        // Si ya existe un PlayerController persistente en la escena, destruir este objeto
-        if (GameObject.FindObjectsOfType<PlayerController>().Length > 1)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         // Verificar si el objeto menuInterface ya está presente en la escena.
         if (menuInterface == null)
         {
             menuInterface = GameObject.Find("MenuInterface");
-        }
 
-        // Si no existe el menuInterface, lo encontramos y lo hacemos persistente
-        if (menuInterface != null)
-        {
-            if (menuInterface.activeSelf == false)
-            {
-                menuInterface.SetActive(false);  // Asegurarse de que está desactivado inicialmente
-            }
         }
-
-        // Suscribirse al evento de carga de escenas
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
 
@@ -265,38 +248,43 @@ public class PlayerController : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-         // Comprobar si el objeto PlayerController sigue existiendo
-    if (this == null) 
-    {      
-        return; // Salir si el objeto ya fue destruido
-    }
+        // Comprobar si el objeto PlayerController sigue existiendo
+        if (this == null)
+        {
+            return; // Salir si el objeto ya fue destruido
+        }
 
-    // Buscar si ya existe una instancia duplicada de menuInterface en la nueva escena
-    GameObject existingMenu = GameObject.Find("MenuInterface");
+        // Buscar el objeto "MenuInterface" aunque esté desactivado
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
 
-    if (existingMenu != null && existingMenu != menuInterface)
-    {
-        // Si existe un duplicado de menuInterface, destruirlo
-        Destroy(existingMenu);
-    }
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name == "MenuInterface")
+            {
+                menuInterface = obj;
+                
+                // Asegurar que está activo antes de interactuar con él
+                menuInterface.SetActive(false);
+                break;
+            }
+        }
 
-    // Asegurarse de que el menuInterface no se destruya al cambiar de escena
-    if (menuInterface != null && menuInterface.transform.parent == null)
-    {
-        DontDestroyOnLoad(menuInterface);
-    }
+        if (menuInterface == null)
+        {
+            Debug.LogWarning("No se encontró MenuInterface en la nueva escena.");
+        }
 
-    // Si venimos de una escena de combate, restaurar la posición
-    if (scene.name == ScenePositionEnterCombatData.ultimaEscena)
-    {
-        transform.position = ScenePositionEnterCombatData.ultimaPosicion;
-        Debug.Log("Posición restaurada: " + transform.position);
-    }
 
-    // Restablecer la bandera de transición al cargar la escena
-    isInTransition = false;
+        // Si venimos de una escena de combate, restaurar la posición
+        if (scene.name == ScenePositionEnterCombatData.ultimaEscena)
+        {
+            transform.position = ScenePositionEnterCombatData.ultimaPosicion;
+            
+        }
 
-       
+        // Restablecer la bandera de transición al cargar la escena
+        isInTransition = false;
+
     }
 
      private void OnDestroy()

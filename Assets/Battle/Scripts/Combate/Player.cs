@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public CharacterStats stats; // Referencia a las estadísticas del jugador
-    
+
     private Enemy targetEnemy; // Enemigo seleccionado
     public Enemy[] enemies; // Lista de enemigos
     public CombatManager2 combatManager2; // Referencia al CombatManager
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
 
             MoveMarkerToTarget(); // Mover el marcador al primer enemigo
 
-             // Asegurarse de que el marcador de enemy1 esté activo al principio
+            // Asegurarse de que el marcador de enemy1 esté activo al principio
             if (marcadorEnemy1 != null)
             {
                 marcadorEnemy1.gameObject.SetActive(true);  // Activar el marcador de enemy1
@@ -143,28 +143,31 @@ public class Player : MonoBehaviour
     {
         // Filtrar enemigos vivos
         enemies = FilterAliveEnemies(enemies);
-        
-         if (enemies.Length > 0)
+
+        if (enemies.Length == 0)
         {
+            // Si no hay enemigos vivos, no hay nada que hacer
+            marcadorEnemy1.SetActive(false);
+            marcadorEnemy2.SetActive(false);
+            targetEnemy = null; // Asegurarse de que no haya un objetivo activo
+            return;
+        }
+
         // Seleccionar el primer enemigo si se presiona la tecla 1
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && enemies.Length > 0)
         {
             targetEnemy = enemies[0]; // Seleccionar el primer enemigo vivo
             Debug.Log("Objetivo cambiado a: " + targetEnemy.name);
             MoveMarkerToTarget(); // Mover el marcador
         }
-        }
-          if (enemies.Length > 0)
-        {
-        // Seleccionar el segundo enemigo si se presiona la tecla 2
-       if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && enemies.Length > 1)
         {
             targetEnemy = enemies[1]; // Seleccionar el segundo enemigo vivo
             Debug.Log("Objetivo cambiado a: " + targetEnemy.name);
             MoveMarkerToTarget(); // Mover el marcador
         }
-        }
-        
+
         // Si el objetivo está muerto, seleccionar automáticamente al siguiente enemigo
         if (targetEnemy != null && targetEnemy.health <= 0)
         {
@@ -180,8 +183,6 @@ public class Player : MonoBehaviour
                 marcadorEnemy1.SetActive(false);
                 marcadorEnemy2.SetActive(false);
             }
-
-          
         }
 
         if (isGameOver && Input.GetKeyDown(KeyCode.Space))
@@ -237,33 +238,40 @@ public class Player : MonoBehaviour
     // Método para hacer que el personaje parpadee rápidamente al recibir daño
     private IEnumerator BlinkOnDamage()
     {
-    SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-    if (spriteRenderer != null)
-    {
-        for (int i = 0; i < 2; i++) // Parpadea 2 veces
+        if (spriteRenderer != null)
+        {
+            for (int i = 0; i < 2; i++) // Parpadea 2 veces
             {
                 spriteRenderer.enabled = false; // Ocultar
                 yield return new WaitForSeconds(0.1f);
                 spriteRenderer.enabled = true; // Mostrar
                 yield return new WaitForSeconds(0.1f);
             }
-    }
+        }
     }
 
     public void Attack()
     {
-        Enemy enemyToAttack = GetCurrentMarkedEnemy();
-
-        if (targetEnemy != null && stats != null)
+        if (targetEnemy != null)
         {
-            int reducedAttackPower = Mathf.FloorToInt(stats.attackPower * attackReduction);  // Aplica la reducción de ataque
+            Enemy enemyToAttack = GetCurrentMarkedEnemy();
 
-            Debug.Log("¡El jugador ataca a " + targetEnemy.name + " e inflige " + stats.attackPower + " de daño!");
-            targetEnemy.TakeDamage(stats.attackPower);
+            // Asegúrate de que el enemigo esté vivo
+            if (enemyToAttack != null && enemyToAttack.health > 0)
+            {
+                int reducedAttackPower = Mathf.FloorToInt(stats.attackPower * attackReduction);  // Aplica la reducción de ataque
+
+                Debug.Log("¡El jugador ataca a " + targetEnemy.name + " e inflige " + stats.attackPower + " de daño!");
+                targetEnemy.TakeDamage(stats.attackPower);
+            }
+            else
+            {
+                Debug.Log("¡No hay enemigos vivos a los que atacar!");
+            }
         }
     }
-
 
     // Método para lanzar la habilidad Disparo de Fe
     public void DisparoDeFe()
@@ -308,76 +316,77 @@ public class Player : MonoBehaviour
 
     public void Heal()
     {
-    {   if (!canHeal)  // Si no puedes curarte debido a necrosis, no se puede curar
         {
-            Debug.Log("¡No puedes curarte debido a necrosis!");
-            return;
-        }
-        
-        if (stats.currentMana >= healManaCost) // Verificar si tiene suficiente maná
-        {
-            int healAmount = Mathf.FloorToInt(stats.maxHealth * healPercentage); // 30% de la vida máxima
-
-            // Restaurar salud sin exceder la vida máxima
-            stats.currentHealth = Mathf.Min(stats.currentHealth + healAmount, stats.maxHealth);
-
-            // Restar maná
-            stats.currentMana -= healManaCost;
-
-            Debug.Log("¡El jugador se ha curado " + healAmount + " puntos de salud! Salud actual: " + stats.currentHealth);
-            audioSource.PlayOneShot(healSound);
-            Debug.Log("Maná restante: " + stats.currentMana);
-
-            // Actualizar la UI de vida y maná
-            PlayerStats.Instance.UpdateUI();
-
-            if (combatManager2 != null)
+            if (!canHeal)  // Si no puedes curarte debido a necrosis, no se puede curar
             {
-                combatManager2.EnemyTurn();
+                Debug.Log("¡No puedes curarte debido a necrosis!");
+                return;
             }
+
+            if (stats.currentMana >= healManaCost) // Verificar si tiene suficiente maná
+            {
+                int healAmount = Mathf.FloorToInt(stats.maxHealth * healPercentage); // 30% de la vida máxima
+
+                // Restaurar salud sin exceder la vida máxima
+                stats.currentHealth = Mathf.Min(stats.currentHealth + healAmount, stats.maxHealth);
+
+                // Restar maná
+                stats.currentMana -= healManaCost;
+
+                Debug.Log("¡El jugador se ha curado " + healAmount + " puntos de salud! Salud actual: " + stats.currentHealth);
+                audioSource.PlayOneShot(healSound);
+                Debug.Log("Maná restante: " + stats.currentMana);
+
+                // Actualizar la UI de vida y maná
+                PlayerStats.Instance.UpdateUI();
+
+                if (combatManager2 != null)
+                {
+                    combatManager2.EnemyTurn();
+                }
+            }
+
         }
 
-    }
-    
-        
- }
 
-   public void TryToEscape()
-{
-    // Obtener el nombre de la escena actual
-    string currentScene = SceneManager.GetActiveScene().name;
-
-    // Verificar si la escena actual contiene "BossCombat"
-    if (currentScene.Contains("BossCombat"))
-    {
-        Debug.Log("No puedes escapar durante un combate contra el jefe.");
-        return; // No permite escapar si es un combate contra el jefe
     }
 
-    // Obtener la agilidad del jugador (usando PlayerStats.Instance para acceder a la instancia global de stats)
-    int agilidadJugador = PlayerStats.Instance.stats.agility;
-
-    // Calcular la probabilidad de escape, donde 0.5f es la probabilidad base
-    // y se escala en función de la agilidad del jugador. Ajustamos para que una agilidad de 20
-    // dé un 100% de probabilidad de escape.
-    float probabilidadEscape = 0.5f + (agilidadJugador / 40f); // 40 es el factor de normalización para 100% a 20 de agilidad
-
-    // Asegurarnos de que la probabilidad no se pase de 1 (100%)
-    probabilidadEscape = Mathf.Min(probabilidadEscape, 1f);
-
-    float resultado = Random.value; // Número aleatorio entre 0.0 y 1.0
-
-    if (resultado <= probabilidadEscape)
+    public void TryToEscape()
     {
-        Debug.Log("¡Escape exitoso!");
+        // Obtener el nombre de la escena actual
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        // Verificar que la escena anterior no sea "SceneCombat" y si la última escena es "Mapa1_Dialogos"
-        if (!string.IsNullOrEmpty(ScenePositionEnterCombatData.ultimaEscena) &&
-            !ScenePositionEnterCombatData.ultimaEscena.Contains("SceneCombat"))
+        // Verificar si la escena actual contiene "BossCombat"
+        if (currentScene.Contains("BossCombat"))
         {
-            string previousScene = ScenePositionEnterCombatData.ultimaEscena;
+            Debug.Log("No puedes escapar durante un combate contra el jefe.");
+            return; // No permite escapar si es un combate contra el jefe
+        }
 
-             if (previousScene == "Mapa1_Dialogos")
+        // Obtener la agilidad del jugador (usando PlayerStats.Instance para acceder a la instancia global de stats)
+        int agilidadJugador = PlayerStats.Instance.stats.agility;
+
+        // Calcular la probabilidad de escape, donde 0.5f es la probabilidad base
+        // y se escala en función de la agilidad del jugador. Ajustamos para que una agilidad de 20
+        // dé un 100% de probabilidad de escape.
+        float probabilidadEscape = 0.5f + (agilidadJugador / 40f); // 40 es el factor de normalización para 100% a 20 de agilidad
+
+        // Asegurarnos de que la probabilidad no se pase de 1 (100%)
+        probabilidadEscape = Mathf.Min(probabilidadEscape, 1f);
+
+        float resultado = Random.value; // Número aleatorio entre 0.0 y 1.0
+
+        if (resultado <= probabilidadEscape)
+        {
+            Debug.Log("¡Escape exitoso!");
+
+            // Verificar que la escena anterior no sea "SceneCombat" y si la última escena es "Mapa1_Dialogos"
+            if (!string.IsNullOrEmpty(ScenePositionEnterCombatData.ultimaEscena) &&
+                !ScenePositionEnterCombatData.ultimaEscena.Contains("SceneCombat"))
+            {
+                string previousScene = ScenePositionEnterCombatData.ultimaEscena;
+
+                if (previousScene == "Mapa1_Dialogos")
                 {
                     // Cargar la escena "Mapa1"
                     SceneManager.LoadScene("Mapa1");
@@ -393,57 +402,60 @@ public class Player : MonoBehaviour
                     // Esperar que la escena "Mapa2" se cargue y luego restaurar la posición
                     StartCoroutine(WaitForSceneToLoadAndRestorePosition("Mapa2_Solomon_Post_Servant"));
                 }
-                else if (previousScene == "Mapa2_Solomon_Post_Servant"){
+                else if (previousScene == "Mapa2_Solomon_Post_Servant")
+                {
                     // Cargar la escena "Mapa2"
                     SceneManager.LoadScene("Mapa2");
                     StartCoroutine(WaitForSceneToLoadAndRestorePosition("Mapa2"));
                 }
-                else if (previousScene == "Mapa5"){
+                else if (previousScene == "Mapa5")
+                {
                     // Cargar la escena "Mapa2"
                     SceneManager.LoadScene("Mapa6");
                     StartCoroutine(WaitForSceneToLoadAndRestorePosition("Mapa6"));
                 }
-                else if (previousScene == "Mapa6"){
+                else if (previousScene == "Mapa6")
+                {
                     // Cargar la escena "Mapa2"
                     SceneManager.LoadScene("Mapa7");
                     StartCoroutine(WaitForSceneToLoadAndRestorePosition("Mapa7"));
                 }
+                else
+                {
+                    // Si la escena anterior no es "Mapa1_Dialogos", cargar la última escena guardada
+                    SceneManager.LoadScene(previousScene);
+
+                    // Restaurar la posición guardada
+                    transform.position = ScenePositionEnterCombatData.ultimaPosicion;
+                }
+
+                // Restablecer la bandera de transición
+                PlayerController playerController = FindObjectOfType<PlayerController>();
+                if (playerController != null)
+                {
+                    playerController.isInTransition = false; // Permitir futuros combates
+                }
+            }
             else
             {
-                // Si la escena anterior no es "Mapa1_Dialogos", cargar la última escena guardada
-                SceneManager.LoadScene(previousScene);
-
-                // Restaurar la posición guardada
-                transform.position = ScenePositionEnterCombatData.ultimaPosicion;
+                Debug.LogError("No hay una escena anterior guardada o la escena guardada es un combate.");
             }
+        }
+        else
+        {
+            Debug.Log("¡No pudiste escapar! Los enemigos atacan.");
 
-            // Restablecer la bandera de transición
-            PlayerController playerController = FindObjectOfType<PlayerController>();
-            if (playerController != null)
+            // Llamar al turno del enemigo si el escape falla
+            if (combatManager2 != null)
             {
-                playerController.isInTransition = false; // Permitir futuros combates
+                combatManager2.EnemyTurn();
+            }
+            else
+            {
+                Debug.LogError("El combatManager2 no está asignado. No se puede continuar el combate.");
             }
         }
-        else
-        {
-            Debug.LogError("No hay una escena anterior guardada o la escena guardada es un combate.");
-        }
     }
-    else
-    {
-        Debug.Log("¡No pudiste escapar! Los enemigos atacan.");
-
-        // Llamar al turno del enemigo si el escape falla
-        if (combatManager2 != null)
-        {
-            combatManager2.EnemyTurn();
-        }
-        else
-        {
-            Debug.LogError("El combatManager2 no está asignado. No se puede continuar el combate.");
-        }
-    }
-}
 
 
 
@@ -536,15 +548,21 @@ public class Player : MonoBehaviour
 
     private Enemy GetCurrentMarkedEnemy()
     {
-        if (marcadorEnemy1.activeSelf)  // Si el marcador del enemigo 1 está activo
+        // Asegúrate de que haya enemigos vivos
+        if (enemies != null && enemies.Length > 0)
         {
-        return enemies[0];  // Retornamos el enemigo 1
+            if (marcadorEnemy1.activeSelf)  // Si el marcador del enemigo 1 está activo
+            {
+                return enemies[0];  // Retornamos el enemigo 1
+            }
+            if (marcadorEnemy2.activeSelf)  // Si el marcador del enemigo 2 está activo
+            {
+                return enemies[1];  // Retornamos el enemigo 2
+            }
         }
-        if (marcadorEnemy2.activeSelf)  // Si el marcador del enemigo 2 está activo
-        {
-        return enemies[1];  // Retornamos el enemigo 2
-        }
-        return null;  // Si no hay marcador activo, no hay enemigo para atacar
+
+        // Si no hay enemigos activos, retorna null
+        return null;
     }
 
     public void ApplyBleedEffect(int damagePerTurn, int turns)
@@ -586,56 +604,56 @@ public class Player : MonoBehaviour
     // Método para aplicar Necrosis
     public void ApplyNecrosisEffect(int damagePerTurn, int duration)
     {
-    isNecrosisActive = true;
-    necrosisDamage = damagePerTurn;
-    necrosisTurnsLeft = duration;
-    canHeal = false;  // Bloquea la curación mientras dure la necrosis
-    Debug.Log($"¡Necrosis aplicada! Recibirás {damagePerTurn} de daño por turno durante {duration} turnos.");
+        isNecrosisActive = true;
+        necrosisDamage = damagePerTurn;
+        necrosisTurnsLeft = duration;
+        canHeal = false;  // Bloquea la curación mientras dure la necrosis
+        Debug.Log($"¡Necrosis aplicada! Recibirás {damagePerTurn} de daño por turno durante {duration} turnos.");
     }
 
     public void StartTurn()
     {
-    if (isNecrosisActive && necrosisTurnsLeft > 0)
-    {
-        TakeDamage(necrosisDamage);
-        necrosisTurnsLeft--;
-        Debug.Log($"¡Necrosis inflige {necrosisDamage} de daño! ({necrosisTurnsLeft} turnos restantes)");
-
-        if (necrosisTurnsLeft <= 0)
+        if (isNecrosisActive && necrosisTurnsLeft > 0)
         {
-            isNecrosisActive = false;
-            canHeal = true;  // Permite curarse nuevamente
-            Debug.Log("¡La necrosis se ha desvanecido!");
+            TakeDamage(necrosisDamage);
+            necrosisTurnsLeft--;
+            Debug.Log($"¡Necrosis inflige {necrosisDamage} de daño! ({necrosisTurnsLeft} turnos restantes)");
+
+            if (necrosisTurnsLeft <= 0)
+            {
+                isNecrosisActive = false;
+                canHeal = true;  // Permite curarse nuevamente
+                Debug.Log("¡La necrosis se ha desvanecido!");
+            }
         }
     }
-    }
-    
+
     private void Die()
     {
-         GameObject personaje = GameObject.Find("Solomon"); // Buscar al personaje "Solomon"
+        GameObject personaje = GameObject.Find("Solomon"); // Buscar al personaje "Solomon"
         if (personaje != null)
         {
-        personaje.SetActive(false); // Desactivar el personaje
+            personaje.SetActive(false); // Desactivar el personaje
         }
-        
+
         Debug.Log("El jugador ha muerto.");
-        
+
         //Buscar el Canvas y desactivarlo
         GameObject canvas = GameObject.Find("Canvas");
         if (canvas != null)
         {
-        canvas.SetActive(false);
+            canvas.SetActive(false);
         }
 
         // Activar la pantalla de Game Over
         if (gameOver != null)
         {
-        gameOver.SetActive(true);
-        isGameOver = true; // Marcar el estado de Game Over
+            gameOver.SetActive(true);
+            isGameOver = true; // Marcar el estado de Game Over
         }
         else
         {
-        Debug.LogError("No se ha asignado el objeto Game Over en el Inspector.");
+            Debug.LogError("No se ha asignado el objeto Game Over en el Inspector.");
         }
 
     }
@@ -646,7 +664,7 @@ public class Player : MonoBehaviour
         transform.position = ScenePositionEnterCombatData.ultimaPosicion;
     }
 
-     // Coroutine para esperar a que la escena se cargue y restaurar la posición
+    // Coroutine para esperar a que la escena se cargue y restaurar la posición
     private IEnumerator WaitForSceneToLoadAndRestorePosition(string sceneName)
     {
         // Esperar hasta que la escena especificada esté activa (cargada)
