@@ -46,7 +46,7 @@ La cuenta de youtube sería esta: https://www.youtube.com/@Chains_of_Shadows
 
 #En Twitter e Instagram:
 
-1 de abril: Publicación de imágenes inquietantes del juego.
+5 de abril: Publicación de imágenes inquietantes del juego.
 
 15 de abril: Publicación de screenshots exclusivas con escenarios del juego junto con personajes y enemigos.
 
