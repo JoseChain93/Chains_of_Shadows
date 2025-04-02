@@ -141,7 +141,7 @@ El plan de marketing consistiría básicamente en:
 -<ins>Publicidad mediante gameplays de streamers facilitando versiones de prueba gratuitas a estos para mayor difusión</ins>.
 
 ## Plan de Desarrollo
-El plan de desarrollo fue de 40 horas de desarrollo en Unity, 5 horas de correccíons de bugs y otras 50 horas dedicadas a desarrollo conceptual, edición de soundtrack y trabajo de apartado gráfico. 
+El plan de desarrollo fue de 95 horas de desarrollo en Unity, 30 horas de correccíons de bugs y otras 15 horas dedicadas a desarrollo conceptual, edición de soundtrack y trabajo de apartado gráfico. 
 
 ![interfazDialogos](interfazDialogos.PNG)
 
